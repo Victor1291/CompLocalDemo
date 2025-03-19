@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CompLocalDemo</string>
+    <string name="dont_have_records">Нет записей!</string>
+    <string name="hi">hi</string>
+    <string name="passed">pass</string>
+    <string name="is_left">left</string>
+    <string name="km">км</string>
+    <string name="weekly_goal">cell</string>
+    <string name="grant">grant</string>
+    <string name="deny">deny</string>
+    <string name="permission_required">accept permission</string>
+    <string name="needed_permissions">needed permissions</string>
+    <string name="km_hr">km/h</string>
+    <string name="kcal">kKal</string>
+</resources>
