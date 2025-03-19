@@ -13,11 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.sp
 import com.shu.complocaldemo.doc_compose.material3.AlertDemo
 import com.shu.complocaldemo.doc_compose.material3.AlertTexts
+import com.shu.complocaldemo.doc_compose.material3.CanvasDemo
+import com.shu.complocaldemo.doc_compose.material3.CanvasTexts
 import com.shu.complocaldemo.doc_compose.material3.ListItemDemo
 import com.shu.complocaldemo.doc_compose.material3.ListTexts
 import com.shu.complocaldemo.doc_compose.material3.TypographyDemo
@@ -25,15 +28,31 @@ import com.shu.complocaldemo.material3Demo.AlertDialogFlowRowDemo
 import com.shu.complocaldemo.material3Demo.AlertDialogSample
 import com.shu.complocaldemo.material3Demo.AlertDialogWithIconSample
 import com.shu.complocaldemo.material3Demo.BasicAlertDialogSample
+import com.shu.complocaldemo.material3Demo.CanvasPieChartSample
+import com.shu.complocaldemo.material3Demo.CanvasSample
+import com.shu.complocaldemo.material3Demo.DrawModifierNodeSample
+import com.shu.complocaldemo.material3Demo.DrawScopeBatchedTransformSample
+import com.shu.complocaldemo.material3Demo.DrawScopeOvalBrushSample
+import com.shu.complocaldemo.material3Demo.DrawScopeRetargetingSample
+import com.shu.complocaldemo.material3Demo.DrawScopeSample
+import com.shu.complocaldemo.material3Demo.DrawTextAnnotatedStringSample
+import com.shu.complocaldemo.material3Demo.DrawTextDrawWithCacheSample
+import com.shu.complocaldemo.material3Demo.DrawTextMeasureInLayoutSample
+import com.shu.complocaldemo.material3Demo.DrawTextSample
+import com.shu.complocaldemo.material3Demo.DrawTextStyledSample
+import com.shu.complocaldemo.material3Demo.DrawWithCacheContentSample
+import com.shu.complocaldemo.material3Demo.DrawWithCacheModifierSample
+import com.shu.complocaldemo.material3Demo.DrawWithCacheModifierStateParameterSample
+import com.shu.complocaldemo.material3Demo.GradientBrushSample
 import com.shu.complocaldemo.material3Demo.HeaderSticky
-import com.shu.complocaldemo.material3Demo.OneLineListItem
 import com.shu.complocaldemo.material3Demo.PullToRefreshScalingSample
+import com.shu.complocaldemo.material3Demo.StampedPathEffectSample
 import com.shu.complocaldemo.material3Demo.ThreeLineListItemWithExtendedSupporting
 import com.shu.complocaldemo.material3Demo.ThreeLineListItemWithOverlineAndSupporting
 import com.shu.complocaldemo.material3Demo.TwoLineListItem
 import com.shu.complocaldemo.string.AnimatedText
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun Material3Item(header: String, isShowDialogClick: (Boolean, String) -> Unit) {
 
@@ -342,6 +361,327 @@ fun Material3Item(header: String, isShowDialogClick: (Boolean, String) -> Unit) 
                         }
                     }
                 }
+
+            }
+        }
+        //Canvas
+        AnimatedText(header = "Canvas", size = fontSizeBig) {
+            Column {
+                AnimatedText(
+                    header = "Canvas",
+                    textNew = buildAnnotatedString {
+                        append(CanvasDemo.canvas)
+                    }
+                )
+                AnimatedText(header = "CanvasSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.CanvasSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            CanvasSample()
+                        }
+                    }
+                }
+                AnimatedText(
+                    header = "CanvasWithDescription",
+                    textNew = buildAnnotatedString {
+                        append(CanvasDemo.canvasWithDescription)
+                    }
+                )
+
+                AnimatedText(header = "CanvasWithDescriptionCode ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.CanvasWithDescriptionCode,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            CanvasPieChartSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "StampedPathEffectCode ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.StampedPathEffectCode,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            StampedPathEffectSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "GradientBrushSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.GradientBrushSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            GradientBrushSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawTextSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawTextSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawTextSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawTextStyledSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawTextStyledSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawTextStyledSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawTextAnnotatedStringSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawTextAnnotatedStringSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawTextAnnotatedStringSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawTextMeasureInLayoutSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawTextMeasureInLayoutSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawTextMeasureInLayoutSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawTextDrawWithCacheSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawTextDrawWithCacheSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawTextDrawWithCacheSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawScopeSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawScopeSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawScopeSample()
+                        }
+                    }
+                }
+                AnimatedText(header = "DrawScopeBatchedTransformSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawScopeBatchedTransformSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawScopeBatchedTransformSample()
+                        }
+                    }
+                }
+                AnimatedText(header = "DrawScopeOvalBrushSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawScopeOvalBrushSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawScopeOvalBrushSample()
+                        }
+                    }
+                }
+
+                AnimatedText(header = "DrawScopeRetargetingSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawScopeRetargetingSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawScopeRetargetingSample()
+                        }
+                    }
+                }
+                AnimatedText(header = "DrawWithCacheModifierSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawWithCacheModifierSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawWithCacheModifierSample()
+                        }
+                    }
+                }
+                AnimatedText(
+                    header = "DrawWithCacheModifierStateParameterSample ",
+                    size = fontSizeBig
+                ) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawWithCacheModifierStateParameterSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawWithCacheModifierStateParameterSample()
+                        }
+                    }
+                }
+                AnimatedText(header = "DrawWithCacheContentSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawWithCacheContentSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawWithCacheContentSample()
+                        }
+                    }
+                }
+                AnimatedText(header = "DrawModifierNodeSample ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawModifierNodeSample,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawModifierNodeSample()
+                        }
+                    }
+                }
+
 
             }
         }

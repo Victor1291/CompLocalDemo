@@ -16,7 +16,6 @@
 
 package com.shu.complocaldemo.material3Demo
 
-import android.graphics.Color
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
@@ -33,7 +32,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -43,13 +41,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupProperties
 
 @Preview(backgroundColor = 0xFFFFFFFF)
 @Composable
@@ -65,39 +60,39 @@ fun MenuSample() {
             Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
         }
 
-MaterialTheme(
-    shapes = MaterialTheme.shapes.copy(
-        extraSmall = RoundedCornerShape(
-            bottomStart = 6.dp,
-            bottomEnd = 6.dp
-        )
-    )
-) {
-    DropdownMenu(
-        expanded = expanded,
-        shadowElevation = 6.dp,
-        offset = DpOffset(x = 20.dp, y = 0.dp),
-        onDismissRequest = { expanded = false }
-    ) {
-        DropdownMenuItem(
-            text = { Text("Edit") },
-            onClick = { /* Handle edit! */ },
-            leadingIcon = { Icon(Icons.Outlined.Edit, contentDescription = null) }
-        )
-        DropdownMenuItem(
-            text = { Text("Settings") },
-            onClick = { /* Handle settings! */ },
-            leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) }
-        )
-        HorizontalDivider()
-        DropdownMenuItem(
-            text = { Text("Send Feedback") },
-            onClick = { /* Handle send feedback! */ },
-            leadingIcon = { Icon(Icons.Outlined.Email, contentDescription = null) },
-            trailingIcon = { Text("F11", textAlign = TextAlign.Center) }
-        )
-    }
-}
+        MaterialTheme(
+            shapes = MaterialTheme.shapes.copy(
+                extraSmall = RoundedCornerShape(
+                    bottomStart = 6.dp,
+                    bottomEnd = 6.dp
+                )
+            )
+        ) {
+            DropdownMenu(
+                expanded = expanded,
+                shadowElevation = 6.dp,
+                offset = DpOffset(x = 20.dp, y = 0.dp),
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(
+                    text = { Text("Edit") },
+                    onClick = { /* Handle edit! */ },
+                    leadingIcon = { Icon(Icons.Outlined.Edit, contentDescription = null) }
+                )
+                DropdownMenuItem(
+                    text = { Text("Settings") },
+                    onClick = { /* Handle settings! */ },
+                    leadingIcon = { Icon(Icons.Outlined.Settings, contentDescription = null) }
+                )
+                HorizontalDivider()
+                DropdownMenuItem(
+                    text = { Text("Send Feedback") },
+                    onClick = { /* Handle send feedback! */ },
+                    leadingIcon = { Icon(Icons.Outlined.Email, contentDescription = null) },
+                    trailingIcon = { Text("F11", textAlign = TextAlign.Center) }
+                )
+            }
+        }
 
 
     }
@@ -108,9 +103,11 @@ MaterialTheme(
 fun MenuWithScrollStateSample() {
     var expanded by remember { mutableStateOf(false) }
     val scrollState = rememberScrollState()
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize(Alignment.TopStart)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.TopStart)
+    ) {
         IconButton(onClick = { expanded = true }) {
             Icon(Icons.Default.MoreVert, contentDescription = "Localized description")
         }

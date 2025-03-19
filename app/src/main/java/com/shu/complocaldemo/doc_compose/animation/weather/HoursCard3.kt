@@ -1,5 +1,6 @@
 package com.shu.complocaldemo.doc_compose.animation.weather
 
+import android.graphics.Paint
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
@@ -34,6 +35,8 @@ import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.inset
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontStyle
@@ -46,6 +49,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.shu.complocaldemo.R
 import com.shu.complocaldemo.ui.theme.CompLocalDemoTheme
 import kotlin.math.roundToInt
 
@@ -127,11 +131,16 @@ fun HoursCard3(
                         text = "+ ${weather.current}",
                         style = materialTextStyle,
                         constraints = Constraints.fixed(
-                            width = size.width.roundToInt() ,//(size.width / 2).roundToInt(),
+                            width = size.width.roundToInt(),//(size.width / 2).roundToInt(),
                             height = size.height.roundToInt()
                         ),
-                       // overflow = TextOverflow.Ellipsis
+                        // overflow = TextOverflow.Ellipsis
                     )
+                   val paint = Paint().apply {
+                        color = android.graphics.Color.WHITE
+                        style = Paint.Style.FILL
+                       textSize = 20f
+                    }
                     // color changes will only invalidate draw phase
                     onDrawWithContent {
                         drawText(
@@ -139,14 +148,22 @@ fun HoursCard3(
                             color = Color.White,
                             topLeft = Offset(
                                 (size.width - textLayoutResult.size.width) / 2 + 30f,
-                                (weather.startY - textLayoutResult.size.height) / 2 ,
+                                (weather.startY - textLayoutResult.size.height) / 2,
                             )
                         )
-                      /*  drawCircle(color,10f,center = Offset(
+                        /*  drawCircle(color,10f,center = Offset(
                             (size.width - textLayoutResult.size.width / 4),
                             (weather.startY - textLayoutResult.size.height) / 2 - 10f ,
                         ))*/
                         drawContent()
+                        drawIntoCanvas { canvas ->
+                            canvas.nativeCanvas.drawText(
+                                weather.id.toString(),
+                                (size.width - textLayoutResult.size.width) / 2 + 30f,
+                                (weather.startY - textLayoutResult.size.height) / 2,
+                                paint
+                            )
+                        }
                         drawLine(
                             color = Color.Green,
                             start = Offset(0f, weather.startY),
@@ -159,7 +176,7 @@ fun HoursCard3(
                             start = Offset(0f, weather.startY),
                             end = Offset(size.width, weather.endY),
                             strokeWidth = 5.0f,
-                           // pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f,20f))
+                            // pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f,20f))
                             pathEffect = PathEffect.stampedPathEffect(
                                 shape = square,
                                 style = StampedPathEffectStyle.Rotate,
@@ -170,7 +187,7 @@ fun HoursCard3(
                         drawLine(
                             color = Color.Green,
                             start = Offset(0f, weather.startY + 30f),
-                            end = Offset(size.width, weather.endY + 30f) ,
+                            end = Offset(size.width, weather.endY + 30f),
                             strokeWidth = 5.0f,
                             // pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f,20f))
                         )

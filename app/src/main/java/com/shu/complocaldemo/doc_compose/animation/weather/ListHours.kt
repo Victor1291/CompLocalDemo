@@ -21,19 +21,19 @@ import com.shu.complocaldemo.ui.theme.CompLocalDemoTheme
 @Composable
 fun ListHours(
     listWeather: List<NewWeather> = listOf(
-        NewWeather(10, 60f, 70f),
-        NewWeather(9, 70f, 80f),
-        NewWeather(8, 80f, 90f),
-        NewWeather(7, 90f, 80f),
-        NewWeather(10, 80f, 70f),
-        NewWeather(11, 70f, 60f),
-        NewWeather(12, 60f, 40f),
-        NewWeather(14, 40f, 20f),
-        NewWeather(20, 20f, 10f),
-        NewWeather(21, 10f, 0f),
-        NewWeather(20, 0f, 10f),
-        NewWeather(20, 10f, 20f),
-        NewWeather(14, 20f, 30f),
+        NewWeather(1,10, 60f, 70f),
+        NewWeather(2,9, 70f, 80f),
+        NewWeather(3,8, 80f, 90f),
+        NewWeather(4,7, 90f, 80f),
+        NewWeather(5,10, 80f, 70f),
+        NewWeather(6,11, 70f, 60f),
+        NewWeather(7,12, 60f, 40f),
+        NewWeather(8,14, 40f, 20f),
+        NewWeather(9,20, 20f, 10f),
+        NewWeather(10,21, 10f, 0f),
+        NewWeather(11,20, 0f, 10f),
+        NewWeather(12,20, 10f, 20f),
+        NewWeather(13,14, 20f, 30f),
     )
 ) {
 
@@ -64,13 +64,13 @@ fun ListHours(
 }
 
 
-fun newlist(): List<NewWeather> {
+/*fun newlist(): List<NewWeather> {
     val list = mutableListOf<NewWeather>()
     for (number in 20 downTo 0) {
         list.add(NewWeather(number, number.toFloat(),number.toFloat()))
     }
     return list
-}
+}*/
 
 @Preview(showBackground = true)
 @Composable

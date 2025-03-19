@@ -41,7 +41,11 @@ import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.graphics.vector.Path
 import androidx.compose.ui.graphics.vector.PathData
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.Measurable
+import androidx.compose.ui.layout.MeasureResult
+import androidx.compose.ui.layout.MeasureScope
 import androidx.compose.ui.node.DrawModifierNode
+import androidx.compose.ui.node.LayoutModifierNode
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.text.ParagraphStyle
@@ -52,6 +56,7 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 
 /**
@@ -202,4 +207,24 @@ fun DrawModifierNodeSample() {
         DrawTextAnnotatedStringSample()
     }
 }
+
+/*
+@Preview
+@Composable
+fun NodeSample() {
+    class TextSimpleNode(override val node: Modifier.Node) : LayoutModifierNode, DrawModifierNode {
+        override fun MeasureScope.measure(
+            measurable: Measurable,
+            constraints: Constraints
+        ): MeasureResult {
+            //TODO("Not yet implemented")
+        }
+
+        override fun ContentDrawScope.draw() {
+            //TODO("Not yet implemented")
+        }
+
+    }
+}
+*/
 
