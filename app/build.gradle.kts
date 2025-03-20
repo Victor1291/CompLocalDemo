@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
 
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
     implementation(libs.voyager.navigator)
     implementation(libs.voyager.transitions)
 

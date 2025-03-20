@@ -23,6 +23,7 @@ object HomeScreen : Screen {
             pagerDemo = { navigator.push(PagerScreen) },
             drawerDemo = { navigator.push(DrawerScreen) },
             hoursDemo = { navigator.push(HoursScreen) },
+            converterDemo = { navigator.push(Temperature) },
         )
     }
 }
