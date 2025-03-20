@@ -17,6 +17,26 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.sp
+import com.shu.complocaldemo.canvasdemo.DrawArc
+import com.shu.complocaldemo.canvasdemo.DrawCircle
+import com.shu.complocaldemo.canvasdemo.DrawImage
+import com.shu.complocaldemo.canvasdemo.DrawLine
+import com.shu.complocaldemo.canvasdemo.DrawLinePathEffect
+import com.shu.complocaldemo.canvasdemo.DrawOval
+import com.shu.complocaldemo.canvasdemo.DrawPath
+import com.shu.complocaldemo.canvasdemo.DrawPoints
+import com.shu.complocaldemo.canvasdemo.DrawRect
+import com.shu.complocaldemo.canvasdemo.DrawRectCorner
+import com.shu.complocaldemo.canvasdemo.DrawRectDemo
+import com.shu.complocaldemo.canvasdemo.DrawRectInset
+import com.shu.complocaldemo.canvasdemo.DrawRectPx
+import com.shu.complocaldemo.canvasdemo.DrawRectSize
+import com.shu.complocaldemo.canvasdemo.DrawRectTopLeft
+import com.shu.complocaldemo.canvasdemo.DrawText
+import com.shu.complocaldemo.canvasdemo.DrawText2
+import com.shu.complocaldemo.canvasdemo.GradientFill
+import com.shu.complocaldemo.canvasdemo.RadialFill
+import com.shu.complocaldemo.canvasdemo.ShadowCircle
 import com.shu.complocaldemo.doc_compose.material3.AlertDemo
 import com.shu.complocaldemo.doc_compose.material3.AlertTexts
 import com.shu.complocaldemo.doc_compose.material3.CanvasDemo
@@ -685,9 +705,250 @@ fun Material3Item(header: String, isShowDialogClick: (Boolean, String) -> Unit) 
 
             }
         }
+
+
+        //Canvas2
+        AnimatedText(header = "Canvas2", size = fontSizeBig) {
+            Column {
+                AnimatedText(
+                    header = "Canvas Demo",
+                    textNew = buildAnnotatedString {
+                        append(CanvasDemo.headCanvas)
+                    }
+                )
+                AnimatedText(header = "LineCanvas ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.LineCanvas,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawLine()
+                        }
+                    }
+                }
+                  AnimatedText(header = "Dashpathefect ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.Dashpathefect,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawLinePathEffect()
+                        }
+                    }
+                }
+                  AnimatedText(header = "DrawRectDemo ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawRectDemo,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column() {
+                                DrawRectDemo()
+                                DrawRectPx()
+                                DrawRectSize()
+                                DrawRectTopLeft()
+                                DrawRectInset()
+                            }
+                        }
+                    }
+                }
+                  AnimatedText(header = "CornerRadius ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.CornerRadius,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawRectCorner()
+                        }
+                    }
+                }
+                  AnimatedText(header = "Rotating ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.Rotating,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            DrawRect()
+                        }
+                    }
+                }
+                 AnimatedText(header = "CircleOval ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.CircleOval,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawCircle()
+                                DrawOval()
+                            }
+                        }
+                    }
+                }
+                 AnimatedText(header = "Gradient ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.Gradient,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                GradientFill()
+                                RadialFill()
+                                ShadowCircle()
+                            }
+                        }
+                    }
+                }
+                 AnimatedText(header = "Arc ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.Arc,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawArc()
+                            }
+                        }
+                    }
+                }
+                 AnimatedText(header = "PathDemo ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.PathDemo,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawPath()
+                            }
+                        }
+                    }
+                }
+                 AnimatedText(header = "DrawPoints ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawPoints,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawPoints()
+                            }
+                        }
+                    }
+                }
+                 AnimatedText(header = "DrawingImage ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawingImage,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawImage()
+                            }
+                        }
+                    }
+                }
+                   AnimatedText(header = "DrawingText ", size = fontSizeBig) {
+                    Column {
+                        AnimatedText(
+                            header = "Code ",
+                            textNew = CanvasDemo.choiceText(slot = CanvasTexts.DrawingText,
+                                isShowDialogClick =
+                                { isShow, textNew ->
+                                    isShowDialogClick(isShow, textNew)
+                                }),
+                            fontSizeSmall
+                        ) {
+                        }
+                        AnimatedText(header = "Preview ", size = fontSizeSmall) {
+                            Column {
+                                DrawText()
+                                DrawText2()
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }
-
 
 private val fontSizeSmall = 14.sp
 private val fontSizeBig = 16.sp

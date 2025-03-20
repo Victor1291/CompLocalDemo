@@ -200,7 +200,7 @@ fun DrawModifierNodeSample() {
     fun Modifier.circle(color: Color) = this then CircleElement(color)
     Box(
         Modifier
-            .fillMaxSize()
+            .size(300.dp)
             .circle(Color.Red)
     ) {
 

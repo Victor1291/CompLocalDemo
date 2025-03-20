@@ -37,7 +37,7 @@ fun Material3Page(goBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Easing functions") },
+                title = { Text("Material 3") },
                 navigationIcon = {
                     IconButton(onClick = goBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, null)

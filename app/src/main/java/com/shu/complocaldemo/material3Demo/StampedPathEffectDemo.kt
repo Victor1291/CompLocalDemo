@@ -20,6 +20,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
@@ -43,7 +44,7 @@ fun StampedPathEffectSample() {
         lineTo(0f, size)
         close()
     }
-    Column(modifier = Modifier.fillMaxHeight().wrapContentSize(Alignment.Center)) {
+    Column(modifier = Modifier.height(300.dp).wrapContentSize(Alignment.Center)) {
         val canvasModifier = Modifier.requiredSize(80.dp).align(Alignment.CenterHorizontally)
 
         // StampedPathEffectStyle.Morph will modify the lines of the square to be curved to fit

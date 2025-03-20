@@ -24,6 +24,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,6 +51,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.roundToInt
 
@@ -58,7 +60,7 @@ import kotlin.math.roundToInt
 fun DrawTextSample() {
     val textMeasurer = rememberTextMeasurer()
 
-    Canvas(Modifier.fillMaxSize()) {
+    Canvas(Modifier.size(300.dp)) {
         drawText(textMeasurer, "Hello, World!")
     }
 }
@@ -68,7 +70,7 @@ fun DrawTextSample() {
 fun DrawTextStyledSample() {
     val textMeasurer = rememberTextMeasurer()
 
-    Canvas(Modifier.fillMaxSize()) {
+    Canvas(Modifier.size(300.dp)) {
         drawText(
             textMeasurer = textMeasurer,
             text = "Hello, World!",
@@ -86,7 +88,7 @@ fun DrawTextStyledSample() {
 fun DrawTextAnnotatedStringSample() {
     val textMeasurer = rememberTextMeasurer()
 
-    Canvas(Modifier.fillMaxSize()) {
+    Canvas(Modifier.size(300.dp)) {
         drawText(
             textMeasurer = textMeasurer,
             text = buildAnnotatedString {
@@ -117,7 +119,7 @@ fun DrawTextMeasureInLayoutSample() {
 
     Canvas(
         Modifier
-            .fillMaxSize()
+            .size(300.dp)
             .layout { measurable, constraints ->
                 val placeable = measurable.measure(constraints)
                 // TextLayout can be done any time prior to its use in draw, including in a
@@ -164,7 +166,7 @@ fun DrawTextDrawWithCacheSample() {
 
     Box(
         Modifier
-            .fillMaxSize()
+            .size(300.dp)
             .drawWithCache {
                 // Text layout will be measured just once until the size of the drawing area or
                 // materialTextStyle changes.
