@@ -24,6 +24,8 @@ object HomeScreen : Screen {
             drawerDemo = { navigator.push(DrawerScreen) },
             hoursDemo = { navigator.push(HoursScreen) },
             converterDemo = { navigator.push(Temperature) },
+            cubeDemo = { navigator.push(StoriesScreen) },
+            touchDemo = { navigator.push(MultiTouchScreen) },
         )
     }
 }

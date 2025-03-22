@@ -4,14 +4,16 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.shu.complocaldemo.doc_compose.animation.page.TemperaturePage
+import com.shu.complocaldemo.doc_compose.animation.page.ComposePage
+import com.shu.complocaldemo.doc_compose.animation.page.EasingDemo
+import com.shu.complocaldemo.doc_compose.animation.page.StoriesPage
 
-object Temperature : Screen {
-    private fun readResolve(): Any = Temperature
+object StoriesScreen : Screen {
+    private fun readResolve(): Any = StoriesScreen
 
     @Composable
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
-        TemperaturePage(goBack = { navigator.pop() })
+        StoriesPage(goBack = { navigator.pop() })
     }
 }
