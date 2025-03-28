@@ -50,7 +50,7 @@ fun MultiTouchDemo(modifier: Modifier = Modifier) {
                 )
                 .transformable(state = state)
                 .background(Color.Blue)
-                .size(100.dp)
+                .size(150.dp)
         )
     }
 }

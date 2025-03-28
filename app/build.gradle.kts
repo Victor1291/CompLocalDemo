@@ -61,6 +61,7 @@ dependencies {
 
     implementation(libs.voyager.navigator)
     implementation(libs.voyager.transitions)
+    implementation(libs.kotlinx.datetime)
 
     // Dagger Hilt
     ksp(libs.hilt.compiler)

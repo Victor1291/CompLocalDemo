@@ -8,6 +8,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -53,7 +55,7 @@ import coil.compose.rememberAsyncImagePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListItemPage(goBack: () -> Unit) {
+fun RowHeaderPage(goBack: () -> Unit) {
 
     val itemArray: Array<String> = stringArrayResource(R.array.car_array)
 
@@ -95,56 +97,39 @@ private fun Content(itemArray: Array<out String>, modifier: Modifier = Modifier)
         ).show()
     }
 
-    Box(modifier.fillMaxSize()) {
-        LazyColumn(
+    Column(modifier.fillMaxSize()) {
+        LazyRow(
             state = listState,
             contentPadding = PaddingValues(bottom = 50.dp)
         ) {
             groupedItems.forEach { (manufacturer, models) ->
 
                 stickyHeader {
-                    Text(
-                        text = manufacturer,
-                        color = Color.White,
-                        modifier = Modifier
-                            .background(Color.Gray)
-                            .padding(5.dp)
-                            .fillMaxWidth()
-                    )
+                    ItemHeader(manufacturer, onItemClick = onListItemClick)
                 }
 
                 items(models) { model ->
-                    MyListItem(item = model, onItemClick = onListItemClick)
+                    ItemHeader(item = model, onItemClick = onListItemClick)
                 }
             }
         }
 
-        AnimatedVisibility(
-            visible = displayButton.value,
-            Modifier.align(Alignment.BottomCenter)
+        LazyRow(
+            state = listState,
+            contentPadding = PaddingValues(bottom = 50.dp)
         ) {
+            groupedItems.forEach { (manufacturer, models) ->
 
-            OutlinedButton(
-                onClick = {
-                    coroutineScope.launch {
-                        listState.scrollToItem(0)
-                    }
-                },
-                border = BorderStroke(1.dp, Color.Gray),
-                shape = RoundedCornerShape(50),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = Color.DarkGray
-                ),
-                modifier = Modifier.padding(5.dp)
-            ) {
-                Text(text = "Top")
+                items(models) { model ->
+                    Item(item = model, onItemClick = onListItemClick)
+                }
             }
         }
     }
 }
 
 @Composable
-fun MyListItem(item: String, onItemClick: (String) -> Unit) {
+fun Item(item: String, onItemClick: (String) -> Unit) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background
@@ -157,7 +142,7 @@ fun MyListItem(item: String, onItemClick: (String) -> Unit) {
     )
     {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            ImageLoader(item)
+            ImageLoader2(item)
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = item,
@@ -169,7 +154,32 @@ fun MyListItem(item: String, onItemClick: (String) -> Unit) {
 }
 
 @Composable
-fun ImageLoader(item: String) {
+fun ItemHeader(item: String, onItemClick: (String) -> Unit) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.background
+        ),
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+            .clickable { onItemClick(item) },
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+    )
+    {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ImageLoader2(item)
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = item,
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun ImageLoader2(item: String) {
     val url =
         "https://www.ebookfrenzy.com/book_examples/car_logos/" + item.substringBefore(" ") + "_logo.png"
 
@@ -183,7 +193,7 @@ fun ImageLoader(item: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun RowHeaderPreview() {
 
     val itemArray: Array<String> = arrayOf(
         "Cadillac Eldorado",

@@ -39,6 +39,7 @@ fun Home(
     converterDemo: () -> Unit,
     cubeDemo: () -> Unit,
     touchDemo: () -> Unit,
+    headerDemo: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -62,6 +63,7 @@ fun Home(
                 converterDemo = converterDemo,
                 cubeDemo = cubeDemo,
                 touchDemo = touchDemo,
+                headerDemo = headerDemo,
             )
         }
     }
@@ -82,6 +84,7 @@ private fun HomeContent(
     converterDemo: () -> Unit,
     cubeDemo: () -> Unit,
     touchDemo: () -> Unit,
+    headerDemo: () -> Unit,
 ) {
     val allDemos = listOf(
         "Easing" to openEasingDemo,
@@ -97,6 +100,7 @@ private fun HomeContent(
         "Converter Demo" to converterDemo,
         "Cube Demo" to cubeDemo,
         "Touch Demo" to touchDemo,
+        "Header Demo" to headerDemo,
             )
 
     LazyColumn {
