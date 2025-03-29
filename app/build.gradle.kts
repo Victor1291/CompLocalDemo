@@ -80,6 +80,8 @@ dependencies {
 
     implementation(libs.maps.compose)
 
+    testImplementation(libs.kotlin.test)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
