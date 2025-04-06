@@ -12,4 +12,12 @@
     <string name="needed_permissions">needed permissions</string>
     <string name="km_hr">km/h</string>
     <string name="kcal">kKal</string>
+    <string name="last_modified">change</string>
+    <string name="favorite">favorite</string>
+    <string name="delete">delete</string>
+    <string name="share">share</string>
+    <string name="set_as_wallpaper">set_as_wallpaper</string>
+    <string name="edit_in">edit_in</string>
+    <string name="like">like</string>
+    <string name="unlike">unlike</string>
 </resources>
